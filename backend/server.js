@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const path = require('path');
 
 dotenv.config();
 const db = require('./config/db'); // Database connection
@@ -19,9 +20,19 @@ app.use('/api/cart', require('./routes/cartRoutes'));
 app.use('/api/categories', require('./routes/categoryRoutes'));
 app.use('/api', require('./routes/orderRoutes'));
 
-app.get('/', (req, res) => {
-    res.send('API Running');
-});
+// Production static serving
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '../frontend/build')));
+    app.get('*', (req, res) => {
+        if (!req.path.startsWith('/api')) {
+            res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
+        }
+    });
+} else {
+    app.get('/', (req, res) => {
+        res.send('API Running');
+    });
+}
 
 // Start server
 app.listen(PORT, () => {

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://localhost:5000/api',
+    baseURL: process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:5000/api',
 });
 
 // Add a request interceptor to include JWT token if available
