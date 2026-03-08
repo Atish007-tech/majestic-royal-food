@@ -4,6 +4,17 @@ const dotenv = require('dotenv');
 const path = require('path');
 
 dotenv.config();
+
+// Catch unhandled errors so Render logs them before exiting with status 1
+process.on('uncaughtException', (err) => {
+    console.error('UNCAUGHT EXCEPTION! Shutting down...', err);
+    process.exit(1);
+});
+process.on('unhandledRejection', (err) => {
+    console.error('UNHANDLED REJECTION! Shutting down...', err);
+    process.exit(1);
+});
+
 const db = require('./config/db'); // Database connection
 
 const app = express();
