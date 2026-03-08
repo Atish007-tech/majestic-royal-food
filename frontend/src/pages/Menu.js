@@ -189,18 +189,7 @@ const Menu = () => {
                 </div>
             </div>
 
-            <div className="bottom-search-bar reveal-up">
-                <div className="search-container aesthetic-glow-bottom">
-                     <span className="search-icon">🌌</span>
-                     <input
-                        type="text"
-                        placeholder="Find more delicacies..."
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                        className="search-bar aesthetic-input"
-                    />
-                </div>
-            </div>
+
 
             {toast.show && (
                 <Toast
