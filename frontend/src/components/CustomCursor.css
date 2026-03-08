@@ -1,8 +1,9 @@
 /* CustomCursor.css */
 
-/* Hide default cursor globally */
-body, * {
-    cursor: none !important;
+@media (hover: hover) and (pointer: fine) {
+    body, * {
+        cursor: none !important;
+    }
 }
 
 .custom-arrow-cursor {

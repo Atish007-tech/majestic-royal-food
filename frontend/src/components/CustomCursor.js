@@ -92,7 +92,7 @@ const CustomCursor = () => {
         return () => cancelAnimationFrame(animationFrame);
     }, [position]);
 
-    if (!isVisible) return null;
+    if (!isVisible || isTouchDevice) return null;
 
     return (
         <div 
