@@ -44,6 +44,11 @@ const Menu = () => {
                 throw new Error("API returned HTML");
             }
 
+            // If the deployed database contains no data, fallback to static beautiful data
+            if (!prodRes.data || prodRes.data.length === 0 || !catRes.data || catRes.data.length === 0) {
+                 throw new Error("API returned empty array (database not seeded)");
+            }
+
             setCategories(catRes.data);
             setProducts(prodRes.data);
             if (catRes.data.length > 0) {
