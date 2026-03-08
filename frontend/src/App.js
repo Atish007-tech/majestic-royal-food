@@ -77,7 +77,7 @@ const Navbar = ({ onSearchClick }) => {
             </div>
           ) : (
             <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-              <a href="/login" style={{ fontWeight: 600, color: '#FFFFFF' }}>Login</a>
+              <a href="/login" className="nav-link">Login</a>
               <a href="/register" style={{
                 background: 'var(--primary)',
                 color: 'white',
